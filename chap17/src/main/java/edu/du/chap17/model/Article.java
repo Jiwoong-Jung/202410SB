@@ -1,7 +1,10 @@
 package edu.du.chap17.model;
 
+import lombok.ToString;
+
 import java.util.Date;
 
+@ToString
 public class Article {
 
 	private int id;

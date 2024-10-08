@@ -20,7 +20,12 @@ public interface ArticleDao {
 	@Select("select count(*) from article")
 	public int selectCount();
 
+	@Select("select article_id, "
+			+ "group_id, sequence_no, posting_date, "
+			+ "read_count, writer_name, password, title "
+			+ "from article order by sequence_no desc limit #{firstRow}, #{endRow}")
 	public List<Article> select(int firstRow, int endRow);
+
 	public int insert(Article article);
 	public Article selectById(int articleId);
 	public void increaseReadCount(int articleId);
