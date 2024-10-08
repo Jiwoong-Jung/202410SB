@@ -1,6 +1,8 @@
 package com.example.demo;
 
 import com.example.demo.dao.ISimpleBbsDao;
+import com.example.demo.dao.ISimpleBbsDao2;
+import com.example.demo.dao.ISimpleBbsDao3;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,12 @@ public class MyController {
     @Autowired
     ISimpleBbsDao dao;
 
+    @Autowired
+    ISimpleBbsDao2 dao2;
+
+    @Autowired
+    ISimpleBbsDao3 dao3;
+
     @RequestMapping("/")
     public String root() throws Exception{
         // JdbcTemplate : SimpleBBS
@@ -23,14 +31,15 @@ public class MyController {
 
     @RequestMapping("/list")
     public String userlistPage(Model model) {
-        model.addAttribute("list", dao.listDao());
+//        model.addAttribute("list", dao2.listDao());
+        model.addAttribute("list", dao3.list());
         return "list";
     }
 
     @RequestMapping("/view")
     public String view(String id, Model model) {
 //        String sId = request.getParameter("id");
-        model.addAttribute("dto", dao.viewDao(id));
+        model.addAttribute("dto", dao2.viewDao(Integer.parseInt(id)));
         return "view";
     }
     
