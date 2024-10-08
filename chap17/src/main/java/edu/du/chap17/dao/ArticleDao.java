@@ -30,7 +30,7 @@ public interface ArticleDao {
 			+ "(group_id, sequence_no, posting_date, read_count, "
 			+ "writer_name, password, title, content) "
 			+ "values (#{article.groupId}, #{article.sequenceNumber}, #{article.postingDate}, 0, #{article.writerName}, #{article.password}, #{article.title}, #{article.content})")
-	@Options(useGeneratedKeys = true, keyProperty = "id", keyColumn="id") //SQL이 생성한 KEY 값을 매핑된 객체의 id 필드에도 담아주겠다.
+	@Options(useGeneratedKeys = true, keyProperty = "id", keyColumn="article_id") //SQL이 생성한 KEY 값을 매핑된 객체의 id 필드에도 담아주겠다.
 	public int insert(@Param("article") Article article);
 
 	@Select("select article_id id, group_id groupId, sequence_no sequenceNumber, posting_date postingDate, read_count readCount, writer_name writerName, password, title, content from article where article_id = #{articleId}")
