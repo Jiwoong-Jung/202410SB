@@ -57,4 +57,13 @@ public class MyController {
         return "updateForm";
     }
 
+    @PostMapping("/update")
+    public String update(HttpServletRequest request) {
+        dao.updateDao(request.getParameter("id"),
+                request.getParameter("writer"),
+                request.getParameter("title"),
+                request.getParameter("content"));
+        return "redirect:list";
+    }
+
 }
