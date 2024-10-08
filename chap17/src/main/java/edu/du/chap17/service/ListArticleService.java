@@ -16,7 +16,7 @@ public class ListArticleService {
 	@Autowired
 	ArticleDao articleDao;
 
-	public static final int COUNT_PER_PAGE = 10;
+	public static final int COUNT_PER_PAGE = 5;
 
 	public ArticleListModel getArticleList(int requestPageNumber) {
 		if (requestPageNumber < 0) {

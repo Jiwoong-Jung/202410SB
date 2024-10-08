@@ -32,7 +32,7 @@
 </tr>
 <tr>
 	<td colspan="2">
-	<a href="list.jsp?p=${param.p}">목록보기</a>
+	<a href="list?p=${param.p}">목록보기</a>
 	<a href="reply_form.jsp?parentId=${article.id}&p=${param.p}">답변쓰기</a>
 	<a href="update_form.jsp?articleId=${article.id}&p=${param.p}">수정하기</a>
 	<a href="delete_form.jsp?articleId=${article.id}">삭제하기</a>

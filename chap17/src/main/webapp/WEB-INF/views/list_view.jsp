@@ -58,13 +58,13 @@
 		<td colspan="5">
 		
 		<c:if test="${beginPage > 10}">
-			<a href="<c:url value="/list.jsp?p=${beginPage-1}"/>">이전</a>
+			<a href="<c:url value="/list?p=${beginPage-1}"/>">이전</a>
 		</c:if>
 		<c:forEach var="pno" begin="${beginPage}" end="${endPage}">
-		<a href="<c:url value="/list.jsp?p=${pno}" />">[${pno}]</a>
+		<a href="<c:url value="/list?p=${pno}" />">[${pno}]</a>
 		</c:forEach>
 		<c:if test="${endPage < listModel.totalPageCount}">
-			<a href="<c:url value="/list.jsp?p=${endPage + 1}"/>">다음</a>
+			<a href="<c:url value="/list?p=${endPage + 1}"/>">다음</a>
 		</c:if>
 		</td>
 	</tr>
