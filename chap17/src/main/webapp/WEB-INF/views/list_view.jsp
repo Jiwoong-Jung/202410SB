@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=euc-kr" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	response.setHeader("Pragma", "No-cache");
@@ -7,7 +7,7 @@
 	response.setDateHeader("Expires", 1L);
 %>
 <html>
-<head><title>°Ô½Ã±Û ¸ñ·Ï</title></head>
+<head><title>ê²Œì‹œê¸€ ëª©ë¡</title></head>
 <body>
 <table border="1">
 	<c:if test="${listModel.totalPageCount > 0}">
@@ -20,18 +20,18 @@
 	</c:if>
 	
 	<tr>
-		<td>±Û ¹øÈ£</td>
-		<td>Á¦¸ñ</td>
-		<td>ÀÛ¼ºÀÚ</td>
-		<td>ÀÛ¼ºÀÏ</td>
-		<td>Á¶È¸¼ö</td>
+		<td>ê¸€ ë²ˆí˜¸</td>
+		<td>ì œëª©</td>
+		<td>ìž‘ì„±ìž</td>
+		<td>ìž‘ì„±ì¼</td>
+		<td>ì¡°íšŒìˆ˜</td>
 	</tr>
 	
 <c:choose>
 	<c:when test="${listModel.hasArticle == false}">
 	<tr>
 		<td colspan="5">
-			°Ô½Ã±ÛÀÌ ¾ø½À´Ï´Ù.
+			ê²Œì‹œê¸€ì´ ì—†ìŠµë‹ˆë‹¤.
 		</td>
 	</tr>
 	</c:when>
@@ -58,13 +58,13 @@
 		<td colspan="5">
 		
 		<c:if test="${beginPage > 10}">
-			<a href="<c:url value="/list?p=${beginPage-1}"/>">ÀÌÀü</a>
+			<a href="<c:url value="/list?p=${beginPage-1}"/>">ì´ì „</a>
 		</c:if>
 		<c:forEach var="pno" begin="${beginPage}" end="${endPage}">
 		<a href="<c:url value="/list?p=${pno}" />">[${pno}]</a>
 		</c:forEach>
 		<c:if test="${endPage < listModel.totalPageCount}">
-			<a href="<c:url value="/list?p=${endPage + 1}"/>">´ÙÀ½</a>
+			<a href="<c:url value="/list?p=${endPage + 1}"/>">ë‹¤ìŒ</a>
 		</c:if>
 		</td>
 	</tr>
@@ -73,7 +73,7 @@
 	
 	<tr>
 		<td colspan="5">
-			<a href="writeForm.jsp">±Û¾²±â</a>
+			<a href="writeForm">ê¸€ì“°ê¸°</a>
 		</td>
 	</tr>	
 </table>

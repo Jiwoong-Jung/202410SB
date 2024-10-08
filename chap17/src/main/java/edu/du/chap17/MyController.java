@@ -2,14 +2,14 @@ package edu.du.chap17;
 
 import edu.du.chap17.model.Article;
 import edu.du.chap17.model.ArticleListModel;
-import edu.du.chap17.service.ArticleNotFoundException;
-import edu.du.chap17.service.ListArticleService;
-import edu.du.chap17.service.ReadArticleService;
+import edu.du.chap17.service.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class MyController {
@@ -19,6 +19,9 @@ public class MyController {
 
     @Autowired
     ReadArticleService readSerivce;
+
+    @Autowired
+    WriteArticleService writeSerivce;
 
     @GetMapping("/")
     public String index() {
@@ -61,4 +64,17 @@ public class MyController {
         }
         return "read_view";
     }
+
+    @GetMapping("/writeForm")
+    public String writeForm() {
+        return "writeForm";
+    }
+
+    @PostMapping("/write")
+    public String write(WritingRequest writingRequest) throws IdGenerationFailedException {
+        System.out.println(writingRequest);
+        writeSerivce.write(writingRequest);
+        return "redirect:list";
+    }
+
 }

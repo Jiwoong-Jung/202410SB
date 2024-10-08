@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=euc-kr" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
@@ -8,34 +8,34 @@
 	response.setDateHeader("Expires", 1L);
 %>
 <html>
-<head><title>±Û ÀÐ±â</title></head>
+<head><title>ê¸€ ì½ê¸°</title></head>
 <body>
 <table>
 <tr>
-	<td>Á¦¸ñ</td>
+	<td>ì œëª©</td>
 	<td>${article.title}</td>
 </tr>
 <tr>
-	<td>ÀÛ¼ºÀÚ</td>
+	<td>ìž‘ì„±ìž</td>
 	<td>${article.writerName}</td>
 </tr>
 <tr>
-	<td>ÀÛ¼ºÀÏ</td>
+	<td>ìž‘ì„±ì¼</td>
 	<td><fmt:formatDate value="${article.postingDate}" 
 		pattern="yyyy-MM-dd" /></td>
 </tr>
 <tr>
-	<td>³»¿ë</td>
+	<td>ë‚´ìš©</td>
 	<td>
 		<pre><c:out value="${article.content}" /></pre>
 	</td>
 </tr>
 <tr>
 	<td colspan="2">
-	<a href="list?p=${param.p}">¸ñ·Ïº¸±â</a>
-	<a href="reply_form.jsp?parentId=${article.id}&p=${param.p}">´äº¯¾²±â</a>
-	<a href="update_form.jsp?articleId=${article.id}&p=${param.p}">¼öÁ¤ÇÏ±â</a>
-	<a href="delete_form.jsp?articleId=${article.id}">»èÁ¦ÇÏ±â</a>
+	<a href="list?p=${param.p}">ëª©ë¡ë³´ê¸°</a>
+	<a href="reply_form.jsp?parentId=${article.id}&p=${param.p}">ë‹µë³€ì“°ê¸°</a>
+	<a href="update_form.jsp?articleId=${article.id}&p=${param.p}">ìˆ˜ì •í•˜ê¸°</a>
+	<a href="delete_form.jsp?articleId=${article.id}">ì‚­ì œí•˜ê¸°</a>
 	</td>
 </tr>
 </table>
