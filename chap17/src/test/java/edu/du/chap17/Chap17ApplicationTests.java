@@ -19,7 +19,7 @@ class Chap17ApplicationTests {
 
     @Test
     void 게시판_목록_출력() {
-        for(Article article : articleDao.select(1, 3)) {
+        for(Article article : articleDao.select(0, 9)) {
             System.out.println(article);
         }
     }
