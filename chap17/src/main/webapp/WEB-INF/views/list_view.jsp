@@ -45,7 +45,7 @@
 			</c:if>
 			<c:set var="query" 
 				value="articleId=${article.id}&p=${listModel.requestPage}"/>
-			<a href="<c:url value="/read.jsp?${query}"/>">
+			<a href="<c:url value="/read?${query}"/>">
 			${article.title}
 			</a>
 		</td>

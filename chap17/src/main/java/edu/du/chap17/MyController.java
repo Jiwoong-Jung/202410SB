@@ -1,7 +1,10 @@
 package edu.du.chap17;
 
+import edu.du.chap17.model.Article;
 import edu.du.chap17.model.ArticleListModel;
+import edu.du.chap17.service.ArticleNotFoundException;
 import edu.du.chap17.service.ListArticleService;
+import edu.du.chap17.service.ReadArticleService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,14 @@ public class MyController {
 
     @Autowired
     ListArticleService listSerivce;
+
+    @Autowired
+    ReadArticleService readSerivce;
+
+    @GetMapping("/")
+    public String index() {
+        return "redirect:list";
+    }
 
     @GetMapping("/list")
     public String list(Model model, HttpServletRequest request) {
@@ -35,5 +46,19 @@ public class MyController {
             model.addAttribute("endPage", endPageNumber);
         }
         return "list_view";
+    }
+
+    @GetMapping("/read")
+    public String read(Model model, HttpServletRequest request) {
+        int articleId = Integer.parseInt(request.getParameter("articleId"));
+        String viewPage = null;
+        try {
+            Article article = readSerivce.readArticle(articleId);
+            model.addAttribute("article", article);
+            viewPage = "/read_view.jsp";
+        } catch(ArticleNotFoundException ex) {
+            viewPage = "/article_not_found.jsp";
+        }
+        return "read_view";
     }
 }
