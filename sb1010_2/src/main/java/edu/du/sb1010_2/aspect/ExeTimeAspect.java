@@ -1,4 +1,4 @@
-package com.example.demo.aspect;
+package edu.du.sb1010_2.aspect;
 
 import java.util.Arrays;
 
@@ -10,14 +10,14 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 
 @Aspect
-//@Order(2)
+@Order(1)
 public class ExeTimeAspect {
 
-	@Pointcut("execution(public * *..chap07..*(..))")
+//	@Pointcut("execution(public * *..chap07..*(..))")
 	private void publicTarget() {
 	}
 
-	@Around("publicTarget()")
+	@Around("execution(public * *..chap07..*(..))")
 	public Object measure(ProceedingJoinPoint joinPoint) throws Throwable {
 		long start = System.nanoTime();
 		try {
