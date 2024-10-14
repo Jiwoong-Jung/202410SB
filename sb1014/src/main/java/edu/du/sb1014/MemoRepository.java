@@ -16,4 +16,6 @@ public interface MemoRepository extends JpaRepository<Memo, Long> {
     @Query("select count(m) from Memo m")
     int getCount();
 
+    @Query("select m from Memo m where m.id = :id")
+    Memo getById(Long id);
 }

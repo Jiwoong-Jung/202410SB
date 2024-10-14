@@ -85,6 +85,10 @@ class Sb1014ApplicationTests {
             System.out.println(memo);
         }
     }
+    @Test
+    void 테스트_쿼리어노테이션3() {
+        System.out.println(memoRepository.getById(3L));
 
+    }
 
 }
