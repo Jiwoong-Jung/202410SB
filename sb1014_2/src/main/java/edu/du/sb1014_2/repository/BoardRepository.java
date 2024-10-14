@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface BoardRepository extends JpaRepository<Board, Integer> {
-    @Query("SELECT b.boardIdx, b.title, b.hitCnt, b.createdDatetime " +
-            "FROM Board b WHERE b.deletedYn = 'N' ORDER BY b.boardIdx DESC")
+    @Query("SELECT new Board(b.boardIdx, b.title, b.contents, b.hitCnt, b.creatorId, b.createdDatetime " +
+            ", b.updaterId, b.updatedDatetime, b.deletedYn) FROM Board b WHERE b.deletedYn = 'N' ORDER BY b.boardIdx DESC")
     List<Board> selectBoardList();
 }
