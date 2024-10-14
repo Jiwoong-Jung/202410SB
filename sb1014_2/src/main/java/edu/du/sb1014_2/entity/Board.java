@@ -1,12 +1,13 @@
 package edu.du.sb1014_2.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.ToString;
+
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "t_board")
+@ToString
 public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
