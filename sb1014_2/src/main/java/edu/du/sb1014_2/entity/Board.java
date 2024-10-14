@@ -25,4 +25,6 @@ public class Board {
     private String updaterId;
 
     private Date updatedDatetime;
+
+    private String deletedYn;
 }
