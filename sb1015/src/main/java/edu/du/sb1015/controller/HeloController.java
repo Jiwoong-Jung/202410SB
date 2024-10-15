@@ -28,7 +28,7 @@ public class HeloController {
         model.addAttribute("object",obj);
         return "index";
     }
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public String index(@PathVariable int id, Model mav) {
         mav.addAttribute("id",id);
         mav.addAttribute("check",id >= 0);
@@ -38,4 +38,15 @@ public class HeloController {
         mav.addAttribute("object",obj);
         return "index";
     }
+
+    @RequestMapping("/month/{month}")
+    public ModelAndView index(@PathVariable int month, ModelAndView mav) {
+        mav.setViewName("index2");
+        int m = Math.abs(month) % 12;
+        m = m == 0 ? 12 : m;
+        mav.addObject("month",m);
+        mav.addObject("check",Math.floor(m / 3));
+        return mav;
+    }
+
 }

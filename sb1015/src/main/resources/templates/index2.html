@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>top page</title>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=UTF-8" />
+    <style>
+        h1 { font-size:18pt; font-weight:bold; color:gray; }
+        body { font-size:13pt; color:gray; margin:5px 25px; }
+        tr { margin:5px; }
+        th { padding:5px; color:white; background:darkgray; }
+        td { padding:5px; color:black; background:#e0e0ff; }
+    </style>
+</head>
+<body>
+<h1>Helo page</h1>
+<div th:switch="${check}">
+    <p th:case="0" th:text="|${month} - Winter|"></p>
+    <p th:case="1" th:text="|${month} - Spring|"></p>
+    <p th:case="2" th:text="|${month} - Summer|"></p>
+    <p th:case="3" th:text="|${month} - Autumn|"></p>
+    <p th:case="4" th:text="|${month} - Winter|"></p>
+    <p th:case="*">...?</p>
+</div>
+</body>
+</html>
