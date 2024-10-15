@@ -14,6 +14,10 @@
 </head>
 <body>
 <h1>Helo page</h1>
+<p th:text="${#dates.format(new java.util.Date(),'dd/MMM/yyyy HH:mm')}"></p>
+<p th:text="${#numbers.formatInteger(1234,7)}"></p>
+<p th:text="${#strings.toUpperCase('Welcome to Spring.')}"></p>
+
 <h1 th:text="#{content.title}">Helo page</h1>
 <table>
     <tr>
@@ -21,10 +25,10 @@
         <th>MAIL</th>
         <th>TEL</th>
     </tr>
-    <tr th:each="obj:${data}">
-        <td th:text="${obj[0]}"></td>
-        <td th:text="${obj[1]}"></td>
-        <td th:text="${obj[2]}"></td>
+    <tr th:each="aa:${data}">
+        <td th:text="${aa[0]}"></td>
+        <td th:text="${aa[1]}"></td>
+        <td th:text="${aa[2]}"></td>
     </tr>
 </table>
 </body>
