@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+
 @Controller
 public class HeloController {
 
@@ -46,6 +48,17 @@ public class HeloController {
         m = m == 0 ? 12 : m;
         mav.addObject("month",m);
         mav.addObject("check",Math.floor(m / 3));
+        return mav;
+    }
+
+    @RequestMapping("/index3")
+    public ModelAndView index(ModelAndView mav) {
+        mav.setViewName("index3");
+        ArrayList<String[]> data = new ArrayList<String[]>();
+        data.add(new String[]{"park","park@yamada","090-999-999"});
+        data.add(new String[]{"lee","lee@flower","080-888-888"});
+        data.add(new String[]{"choi","choi@happy","080-888-888"});
+        mav.addObject("data",data);
         return mav;
     }
 
