@@ -62,4 +62,15 @@ public class HeloController {
         return mav;
     }
 
+    @RequestMapping("/index4")
+    public ModelAndView index4(ModelAndView mav) {
+        mav.setViewName("index4");
+        ArrayList<String[]> data = new ArrayList<String[]>();
+        data.add(new String[]{"park","park@yamada","090-999-999"});
+        data.add(new String[]{"lee","lee@flower","080-888-888"});
+        data.add(new String[]{"choi","choi@happy","080-888-888"});
+        mav.addObject("data",data);
+        return mav;
+    }
+
 }
