@@ -10,10 +10,11 @@
   </style>
   <script th:inline="javascript">
     function action(){
+      let aaa = '[[${tax}]]';
+      console.log(aaa);
       var val = document.getElementById("text1").value;
       var res = parseInt(val * ((100 + /*[[${tax}]]*/) / 100));
-      document.getElementById("msg").innerHTML =
-              "include tax: " + res;
+      document.getElementById("msg").innerHTML = "include tax: " + res;
     }
   </script>
 </head>
