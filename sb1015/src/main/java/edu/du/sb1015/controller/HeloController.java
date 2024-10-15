@@ -73,4 +73,13 @@ public class HeloController {
         return mav;
     }
 
+    @RequestMapping("/tax/{tax}")
+    public ModelAndView index5(@PathVariable int tax, ModelAndView mav) {
+        mav.setViewName("index5");
+        mav.addObject("tax",tax);
+        return mav;
+    }
+
+
+
 }

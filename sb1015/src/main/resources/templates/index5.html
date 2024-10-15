@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>top page</title>
+  <meta http-equiv="Content-Type"
+        content="text/html; charset=UTF-8" />
+  <style>
+    h1 { font-size:18pt; font-weight:bold; color:gray; }
+    body { font-size:13pt; color:gray; margin:5px 25px; }
+  </style>
+  <script th:inline="javascript">
+    function action(){
+      var val = document.getElementById("text1").value;
+      var res = parseInt(val * ((100 + /*[[${tax}]]*/) / 100));
+      document.getElementById("msg").innerHTML =
+              "include tax: " + res;
+    }
+  </script>
+</head>
+<body>
+<h1 th:text="#{content.title}">Helo page</h1>
+<p id="msg"></p>
+<input type="text" id="text1" />
+<button onclick="action()">click</button>
+</body>
+</html>
