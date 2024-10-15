@@ -2,6 +2,7 @@ package edu.du.sb1014_2.controller;
 
 import edu.du.sb1014_2.entity.Board;
 import edu.du.sb1014_2.service.BoardService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +13,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 public class BoardController {
-	
-	@Autowired
-	private BoardService boardService;
+
+	//	@Autowired
+	private final BoardService boardService;
+
+//	public BoardController(BoardService boardService) {
+//		this.boardService = boardService;
+//	}
 
 	@GetMapping("/")
 	public String index() {
