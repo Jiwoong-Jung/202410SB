@@ -13,8 +13,7 @@
 <body>
 <h1 th:text="${title}">Edit page</h1>
 <table>
-  <form method="post" action="/delete"
-        th:object="${formModel}">
+  <form method="post" action="/delete" th:object="${formModel}">
     <input type="hidden" name="id" th:value="*{id}" />
     <tr><td><p th:text="|이름：　*{name}|"></p></td></tr>
     <tr><td><p th:text="|연령：　*{age}|" ></p></td></tr>

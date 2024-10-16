@@ -19,8 +19,7 @@ public class HeloController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index(
-            @ModelAttribute("formModel") MyData mydata,
-            ModelAndView mav) {
+            @ModelAttribute("formModel") MyData mydata, ModelAndView mav) {
         mav.setViewName("index");
         mav.addObject("msg","this is sample content.");
         Iterable<MyData> list = repository.findAll();
@@ -29,7 +28,7 @@ public class HeloController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    @Transactional
+//    @Transactional
     public ModelAndView form(
             @ModelAttribute("formModel") MyData mydata,
             ModelAndView mav) {
@@ -48,16 +47,14 @@ public class HeloController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    @Transactional
-    public ModelAndView update(@ModelAttribute MyData mydata,
-                               ModelAndView mav) {
+//    @Transactional
+    public ModelAndView update(@ModelAttribute MyData mydata, ModelAndView mav) {
         repository.saveAndFlush(mydata);
         return new ModelAndView("redirect:/");
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public ModelAndView delete(@PathVariable int id,
-                               ModelAndView mav) {
+    public ModelAndView delete(@PathVariable int id, ModelAndView mav) {
         mav.setViewName("delete");
         mav.addObject("title","delete mydata.");
         Optional<MyData> data = repository.findById((long)id);
@@ -66,9 +63,8 @@ public class HeloController {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    @Transactional
-    public ModelAndView remove(@RequestParam long id,
-                               ModelAndView mav) {
+//    @Transactional
+    public ModelAndView remove(@RequestParam long id, ModelAndView mav) {
         repository.deleteById(id);
         return new ModelAndView("redirect:/");
     }
