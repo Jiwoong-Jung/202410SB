@@ -40,4 +40,10 @@ public class HeloController {
         return "edit";
     }
 
+    @PostMapping("/edit")
+    public String update(@ModelAttribute MyData myData) {
+        repository.saveAndFlush(myData);
+        return "redirect:/";
+    }
+
 }
