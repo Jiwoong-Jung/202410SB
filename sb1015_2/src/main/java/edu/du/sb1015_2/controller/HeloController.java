@@ -26,9 +26,10 @@ public class HeloController {
     }
 
     @PostMapping("/")
-    public String form(@ModelAttribute("formModel") MyData mydata) {
+    public String form(@ModelAttribute MyData mydata) {
         repository.saveAndFlush(mydata);
         return "redirect:/";
+//        return "index";
     }
 
 }
