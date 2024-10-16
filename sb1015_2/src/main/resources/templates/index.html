@@ -28,5 +28,13 @@
     <tr><td></td><td><input type="submit" /></td></tr>
   </form>
 </table>
+<hr/>
+<table>
+  <tr><th>ID</th><th>이름</th></tr>
+  <tr th:each="obj : ${datalist}">
+    <td th:text="${obj.id}"></td>
+    <td th:text="${obj.name}"></td>
+  </tr>
+</table>
 </body>
 </html>
