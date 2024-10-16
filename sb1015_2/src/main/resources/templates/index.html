@@ -33,6 +33,7 @@
   <tr><th>ID</th><th>이름</th></tr>
   <tr th:each="obj : ${datalist}">
     <td th:text="${obj.id}"></td>
+    <td><a th:href="@{/edit(id=${obj.id})}" th:text="${obj.id}"></a></td>
     <td th:text="${obj.name}"></td>
   </tr>
 </table>
