@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -30,6 +31,13 @@ public class HeloController {
         repository.saveAndFlush(mydata);
         return "redirect:/";
 //        return "index";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable Long id, @ModelAttribute MyData myData, Model model) {
+        Optional<MyData> myData1 = repository.findById(id);
+        model.addAttribute("formModel",myData1.get());
+        return "edit";
     }
 
 }
