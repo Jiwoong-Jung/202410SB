@@ -16,6 +16,7 @@
 <h1 th:text="#{content.title}">Helo page</h1>
 <table>
   <form method="post" action="/edit" th:object="${formModel}">
+    <input type="hidden" name="id" th:value="*{id}" />
     <tr><td><label for="name">이름</label></td>
       <td><input type="text" name="name" th:value="*{name}" /></td></tr>
     <tr><td><label for="age">연령</label></td>
