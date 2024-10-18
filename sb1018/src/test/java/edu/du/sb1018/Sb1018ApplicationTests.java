@@ -23,6 +23,7 @@ class Sb1018ApplicationTests {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         Dept dept = em.find(Dept.class, 10);  // find = select
+        dept.setDname("서울");
         System.out.println(dept);
         transaction.commit();
     }
