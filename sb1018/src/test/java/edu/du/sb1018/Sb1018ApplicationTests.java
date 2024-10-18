@@ -116,7 +116,7 @@ class Sb1018ApplicationTests {
             System.out.println(d);
         }
         System.out.println(depts.get(0));
-        depts.get(0).setLoc("서울");
+        depts.get(0).setLoc("인천");
         transaction.commit();
     }
 
