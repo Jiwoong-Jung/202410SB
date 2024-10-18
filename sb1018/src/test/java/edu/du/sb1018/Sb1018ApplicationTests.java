@@ -119,6 +119,22 @@ class Sb1018ApplicationTests {
         depts.get(0).setLoc("인천");
         transaction.commit();
     }
-
+    @Test
+    void createQuery_테스트2() {
+        String jpql = "SELECT d FROM Dept d WHERE d.dname = :aaa";
+        TypedQuery<Dept> query = em.createQuery(jpql, Dept.class);
+        query.setParameter("aaa", "Accounting");
+        List<Dept> depts = query.getResultList();
+        Dept dept = depts.get(0);
+        System.out.println(dept);
+        System.out.println("===========================================");
+        String jpql2 = "SELECT d FROM Emp d WHERE d.deptno = :deptNo";
+        TypedQuery<Emp> query2 = em.createQuery(jpql2, Emp.class);
+        query2.setParameter("deptNo", dept.getDeptno());
+        List<Emp> empList = query2.getResultList();
+        for (Emp emp : empList) {
+            System.out.println(emp);
+        }
+    }
 
 }
