@@ -2,7 +2,9 @@ package edu.du.sb1018;
 
 import edu.du.sb1018.entity.Dept;
 import edu.du.sb1018.entity.Emp;
+import edu.du.sb1018.service.EmService;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.persistence.*;
@@ -16,6 +18,9 @@ class Sb1018ApplicationTests {
 
     @PersistenceContext
     private EntityManager em;
+
+    @Autowired
+    EmService emService;
 
     @Test
     void 영속성_find_테스트() {
@@ -133,6 +138,14 @@ class Sb1018ApplicationTests {
         query2.setParameter("deptNo", dept.getDeptno());
         List<Emp> empList = query2.getResultList();
         for (Emp emp : empList) {
+            System.out.println(emp);
+        }
+    }
+
+    @Test
+    void EmService_테스트() {
+        List<Emp> list = emService.findWithName("%K%");
+        for (Emp emp : list) {
             System.out.println(emp);
         }
     }

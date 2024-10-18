@@ -4,51 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d9e24d4-587f-477e-b009-d3dc2fbf8f93" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/../demo4/src/main/java/com/example/demo/configuration/TestInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../demo4/src/main/java/com/example/demo/configuration/WebConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../fileUploadBoard/src/main/resources/logback-spring2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/20241011/362688839379600.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/META-INF/spring-configuration-metadata.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/board/BoardApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/board/ServletInitializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/board/aop/LoggerAspect.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/board/aop/TransactionAspect.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/board/board/controller/BoardController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/board/board/dto/BoardDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/board/board/dto/BoardFileDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/board/board/mapper/BoardMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/board/board/service/BoardService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/board/board/service/BoardServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/board/common/ExceptionHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/board/common/FileUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/board/configuration/DatabaseConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/board/configuration/WebMvcConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/board/interceptor/LoggerInterceptor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/log4jdbc.log4j2.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/logback-spring.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/mapper/sql-board.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/static/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/board/boardDetail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/board/boardList.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/board/boardWrite.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/error/error_default.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fileUploadBoard/src/main/java/com/sky/fileuploadboard/board/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fileUploadBoard/src/main/java/com/sky/fileuploadboard/board/controller/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fileUploadBoard/src/main/resources/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../fileUploadBoard/src/main/resources/logback-spring.xml" afterDir="false" />
-    </list>
+    <list default="true" id="9d9e24d4-587f-477e-b009-d3dc2fbf8f93" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,13 +18,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2nYh18whESQOMaagxW3nhC6r9lq" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
@@ -84,7 +40,7 @@
     "Spring Boot.BoardApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/DU/IdeaProjects/06장",
+    "last_opened_file_path": "C:/Users/DU/IdeaProjects/fileUploadBoard",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -127,6 +83,7 @@
       <option name="presentableId" value="Default" />
       <updated>1729155698780</updated>
       <workItem from="1729155699807" duration="2284000" />
+      <workItem from="1729225858343" duration="841000" />
     </task>
     <servers />
   </component>
