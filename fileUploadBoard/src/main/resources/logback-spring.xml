@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xml>
 <configuration debug="true">
-	<!-- Appenders -->
+	<!-- Appenders: 로그 출력을 어디로 보낼지 정의 -->
 	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<Pattern>%d %5p [%c] %m%n</Pattern>
-		</encoder>   
+			<Pattern>%d %5p [%c] %m%n</Pattern> <!-- 로그 형식: 날짜, 레벨, 로거 이름, 메시지 -->
+		</encoder>
 	</appender>
 
 	<appender name="console-infolog" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<Pattern>%d %5p %m%n</Pattern>
-		</encoder>   
+			<Pattern>%d %5p %m%n</Pattern> <!-- 로그 형식: 날짜, 레벨, 메시지 (로거 이름 없음) -->
+		</encoder>
 	</appender>
 
-	<!-- 로거 -->
-	<logger name="board" level="DEBUG" appender-ref="console"/>
-	<logger name="jdbc.sqlonly" level="INFO" appender-ref="console-infolog"/>
-	<logger name="jdbc.resultsettable" level="INFO" appender-ref="console-infolog"/>
-	<logger name="org.springframework" level="error"/>
-	<logger name="org.springframework.jdbc" level="error"/>
-	
-	<!-- 루트 로거 -->
-    <root level="error">
-        <appender-ref ref="console"/>
-    </root>
+	<!-- 로거: 패키지별 로깅 수준 지정 -->
+	<logger name="board" level="DEBUG" appender-ref="console"/> <!-- 'board'에 대해 모든 DEBUG 메시지 로깅 -->
+	<logger name="jdbc.sqlonly" level="INFO" appender-ref="console-infolog"/> <!-- SQL 작업에 대한 INFO 메시지 로깅 -->
+	<logger name="jdbc.resultsettable" level="INFO" appender-ref="console-infolog"/> <!-- 결과 집합에 대한 INFO 메시지 로깅 -->
+	<logger name="org.springframework" level="error"/> <!-- Spring 프레임워크에 대한 ERROR 메시지 로깅 -->
+	<logger name="org.springframework.jdbc" level="error"/> <!-- Spring JDBC에 대한 ERROR 메시지 로깅 -->
+
+	<!-- 루트 로거: 기본 로깅 구성 -->
+	<root level="error"> <!-- 루트 로깅 수준을 ERROR로 설정 -->
+		<appender-ref ref="console"/> <!-- 루트 로그에 'console' appender 사용 -->
+	</root>
 </configuration>

@@ -3,6 +3,7 @@ package com.sky.fileuploadboard.board.controller;
 import com.sky.fileuploadboard.board.dto.BoardDto;
 import com.sky.fileuploadboard.board.dto.BoardFileDto;
 import com.sky.fileuploadboard.board.service.BoardService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @Controller
+@Slf4j
 public class BoardController {
 	
 	@Autowired
@@ -26,6 +28,7 @@ public class BoardController {
 	
 	@RequestMapping("board/openBoardList.do")
 	public ModelAndView openBoardList() throws Exception{
+		log.info("====> openBoardList {}", "테스트");
 		ModelAndView mv = new ModelAndView("board/boardList");
 		
 		List<BoardDto> list = boardService.selectBoardList();
