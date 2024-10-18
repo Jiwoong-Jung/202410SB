@@ -103,6 +103,22 @@ class Sb1018ApplicationTests {
             System.out.println(emp);
         }
     }
+    @Test
+    void createQuery_영속성테스트() {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+
+        System.out.println("===========================================");
+        TypedQuery<Dept> query = em.createQuery("SELECT d FROM Dept d", Dept.class);
+        List<Dept> depts = query.getResultList();
+        for (Dept d : depts) {
+            System.out.println(d);
+        }
+        System.out.println(depts.get(0));
+        depts.get(0).setLoc("서울");
+        transaction.commit();
+    }
 
 
 }
