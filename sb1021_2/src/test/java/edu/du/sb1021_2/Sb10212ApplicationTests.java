@@ -32,7 +32,7 @@ class Sb10212ApplicationTests {
                 .build();
         System.out.println(memberRepository.save(member));
 
-        Member members = memberDao.selectByEmail("hong@korea.com");
+        Member members = memberDao.selectByEmail("hong@korea.com").get();
         System.out.println(members);
     }
 
