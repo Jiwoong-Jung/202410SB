@@ -25,13 +25,6 @@ public class Member {
     private String password;
     private LocalDateTime regdate;
 
-    public Member(String name, String email, String password, LocalDateTime regdate) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.regdate = regdate;
-    }
-
     public void changePassword(String oldPassword, String newPassword) {
         if (!password.equals(oldPassword))
             throw new WrongIdPasswordException();
