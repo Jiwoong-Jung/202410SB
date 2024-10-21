@@ -26,6 +26,7 @@ public class MemberRegisterService {
 				.regdate(LocalDateTime.now())
 				.build();
 		memberDao.insert(newMember);
+		System.out.println("====>" + newMember);
 		return newMember.getId();
 	}
 }
