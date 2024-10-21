@@ -1,11 +1,13 @@
 package edu.du.sb1021_2.entity;
 
+import edu.du.sb1021_2.spring.WrongIdPasswordException;
 import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -19,8 +21,20 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String email;
     private String password;
-    private Date regdate;
+    private LocalDateTime regdate;
 
+    public Member(String name, String email, String password, LocalDateTime regdate) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.regdate = regdate;
+    }
 
+    public void changePassword(String oldPassword, String newPassword) {
+        if (!password.equals(oldPassword))
+            throw new WrongIdPasswordException();
+        this.password = newPassword;
+    }
 }
