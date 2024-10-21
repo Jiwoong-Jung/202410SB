@@ -21,10 +21,10 @@ public class RegisterController {
 		this.memberRegisterService = memberRegisterService;
 	}
 	
-//	@GetMapping("/")
-//	public String root() {
-//		return "/register/step1";
-//	}
+	@GetMapping("/")
+	public String root() {
+		return "/register/step1";
+	}
 
 	@RequestMapping("/register/step1")
 	public String handleStep1() {

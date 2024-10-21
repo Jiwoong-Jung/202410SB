@@ -1,8 +1,10 @@
 package edu.du.sb1021_2.spring;
 
 import edu.du.sb1021_2.entity.Member;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class ChangePasswordService {
 
 	private MemberDao memberDao;
