@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -27,4 +28,7 @@ public class Member {
 
     @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    private String role;
 }

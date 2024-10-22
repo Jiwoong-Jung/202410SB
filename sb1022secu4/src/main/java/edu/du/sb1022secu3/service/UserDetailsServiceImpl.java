@@ -4,6 +4,7 @@ import edu.du.sb1022secu3.entity.Member;
 import edu.du.sb1022secu3.repository.MemberRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -54,7 +55,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 .username(member.getUsername())
                 .password(member.getPassword())
 //                .authorities(new SimpleGrantedAuthority(member.getRole().toString()))
-                .roles("USER")
+                .roles(member.getRole())
                 .build();
     }
 }
