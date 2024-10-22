@@ -12,6 +12,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @Log4j2
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -27,13 +29,20 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //                .roles("ADMIN")
 //                .build();
 //        return user;
-        Member member = Member.builder()
-                .id(1001L)
-                .username("홍길동")
-                .password(passwordEncoder().encode("1234"))
-                .email("hong@aaa.com")
-                .build();
-        return toUserDetails(member);
+
+//        Member member = Member.builder()
+//                .id(1001L)
+//                .username("홍길동")
+//                .password(passwordEncoder().encode("1234"))
+//                .email("hong@aaa.com")
+//                .build();
+//        return toUserDetails(member);
+
+        Optional<Member> member = memberRepository.findByUsername(username);
+//        if (!member.isPresent()) {
+//            throw new UsernameNotFoundException(username);
+//        }
+        return toUserDetails(member.get());
 
     }
     private PasswordEncoder passwordEncoder() {

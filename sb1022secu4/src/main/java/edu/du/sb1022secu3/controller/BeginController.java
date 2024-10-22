@@ -26,7 +26,7 @@ public class BeginController {
         Member member = Member.builder()
                 .id(1001L)
                 .username("hong1")
-                .password(passwordEncoder().encode("1234"))
+                .password(passwordEncoder().encode("4567"))
                 .email("hong1@aaa.com")
                 .build();
         memberRepository.save(member);
