@@ -37,6 +37,7 @@ public class SecurityConfig {
         log.info("---------filterChain-------------");
         http.authorizeHttpRequests()
 //                .antMatchers("/**").denyAll()
+//                .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
                 .antMatchers("/sample/all").permitAll()
@@ -46,6 +47,9 @@ public class SecurityConfig {
         http.csrf().disable();
         http.logout();
         http.exceptionHandling().accessDeniedPage("/sample/accessDenied");
+        http.csrf()
+                .ignoringAntMatchers("/h2-console/**")
+                .and().headers().frameOptions().sameOrigin();  // 여기!
         return http.build();
     }
 }
