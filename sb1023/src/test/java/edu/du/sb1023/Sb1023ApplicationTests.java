@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceUnit;
+import java.util.List;
 
 @SpringBootTest
 class Sb1023ApplicationTests {
@@ -37,6 +38,26 @@ class Sb1023ApplicationTests {
         Member member2 = new Member("member2", "회원2");
         member2.setTeam(team1);  // 연관관계 설정 member2 -> team1
         em.persist(member2);
+        transaction.commit();
+    }
+
+    @Test
+    void test_find() {
+        // 트랜잭션 시작
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+
+        // 조회를 해보세요.
+        String jpql = "select m from Member m join m.team t where t.name=:teamName";
+        List<Member> resultList = em.createQuery(jpql, Member.class)
+                .setParameter("teamName", "팀1")
+                .getResultList();
+        // 반복문을 사용하여 자료 출력
+        for (Member member : resultList) {
+            System.out.println(member);
+        }
+
         transaction.commit();
     }
 
