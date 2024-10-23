@@ -74,6 +74,56 @@ class Sb1023ApplicationTests {
         transaction.commit();
     }
 
+    @Test
+    void test_update() {
+        // 트랜잭션 시작
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+
+        // 새로운 팀2
+        Team team2 = new Team("team2", "팀2");
+        em.persist(team2);
+
+        // 회원1에 새로운 팀2 설정해 보세요.
+        em.find(Member.class, "member1").setTeam(team2);
+
+        transaction.commit();
+    }
+
+    @Test
+    void test_연관관계제거() {
+        // 트랜잭션 시작
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+
+        Member member1 = em.find(Member.class, "member1");
+        member1.setTeam(null);
+
+        transaction.commit();
+    }
+
+    @Test
+    void test_연관된_엔티티_삭제() {
+        // 트랜잭션 시작
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+
+        //팀2 삭제
+//        Team team = em.find(Team.class, "team2");
+//        em.remove(team);
+
+        //팀1 삭제
+        Team team = em.find(Team.class, "team1");
+        Member member2 = em.find(Member.class, "member2");
+        member2.setTeam(null);
+        em.remove(team);
+
+        transaction.commit();
+    }
+
 
 
     @Test
