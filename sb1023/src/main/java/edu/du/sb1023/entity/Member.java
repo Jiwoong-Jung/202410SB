@@ -19,6 +19,7 @@ public class Member {
 
     private String username;
 
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "team_id")
     private Team team;

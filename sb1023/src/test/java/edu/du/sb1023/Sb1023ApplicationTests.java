@@ -124,6 +124,25 @@ class Sb1023ApplicationTests {
         transaction.commit();
     }
 
+    @Test
+    void test_양방향_탐색() {
+        // 트랜잭션 시작
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+
+        Team team = em.find(Team.class, "team1");
+        for (Member member : team.getMembers()) {
+            System.out.println(member.getTeam().getName());
+//            System.out.println(member.getUsername());
+        }
+//        team.getMembers().forEach(x->{
+//            System.out.println(x.getUsername());
+//        });
+
+        transaction.commit();
+    }
+
 
 
     @Test
@@ -138,5 +157,7 @@ class Sb1023ApplicationTests {
         System.out.println(member2);
 
     }
+
+
 
 }
