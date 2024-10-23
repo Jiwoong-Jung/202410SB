@@ -133,7 +133,7 @@ class Sb1023ApplicationTests {
 
         Team team = em.find(Team.class, "team1");
         for (Member member : team.getMembers()) {
-            System.out.println(member.getTeam().getName());
+            System.out.println(member);
 //            System.out.println(member.getUsername());
         }
 //        team.getMembers().forEach(x->{
