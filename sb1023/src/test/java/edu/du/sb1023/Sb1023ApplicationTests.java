@@ -60,6 +60,19 @@ class Sb1023ApplicationTests {
 
         transaction.commit();
     }
+    @Test
+    void test_find2() {
+        // 트랜잭션 시작
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+
+        Member member = em.find(Member.class, "member1");
+        System.out.println(member);
+        System.out.println("팀이름: " + member.getTeam().getName());
+
+        transaction.commit();
+    }
 
 
 
