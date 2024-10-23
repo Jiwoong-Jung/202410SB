@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <title>회원 목록 조회</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>회원 목록</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>email</th>
+            <th>username</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="member : ${members}">
+            <td th:text="${member.email}">#</td>
+            <td th:text="${member.username}">#</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

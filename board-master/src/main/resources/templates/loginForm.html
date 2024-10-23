@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <title>로그인</title>
+</head>
+<body>
+<div class="container" layout:fragment="content">
+    <form method="post">
+        <div class="form-group">
+            <label class="form-label mt-4">로그인</label>
+            <th:block th:if="${param.error == null}">
+                <div class="form-floating mb-3">
+                    <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
+                </div>
+            </th:block>
+            <th:block th:if="${param.error}">
+                <div class="form-floating mb-3 has-danger">
+                    <input type="email" name="email" class="form-control is-invalid" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
+                    <div class="invalid-feedback">이메일 혹은 비밀번호가 잘못 되었습니다.</div>
+                </div>
+            </th:block>
+            <div class="form-floating mb-4">
+                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Log in</button>
+    </form>
+</div>
+</body>
+</html>

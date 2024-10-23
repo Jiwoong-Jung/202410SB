@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <title>게시글 | [[${dto.getTitle()}]]</title>
+</head>
+<body>
+<div class="container" layout:fragment="content">
+    <h1 class="mt-4">Board</h1>
+    <div class="card mb-4">
+        <div class="card-body">
+            <form>
+                <div class="mb-3">
+                    <label for="title" class="form-label">title</label>
+                    <input type="text" class="form-control" id="title" name="title" th:value="${dto.title}" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="content" class="form-label">content</label>
+                    <textarea class="form-control" id="content" name="content" disabled>[[${dto.content}]]</textarea>
+                </div>
+                <div class="mb-3" th:if="${dto.imageUrls != null}">
+                    <label class="form-label">Images</label>
+                    <div>
+                        <th:block th:each="imageUrl : ${dto.imageUrls}">
+                            <img th:src="${imageUrl}" alt="Image" width="200px" height="200px">
+                        </th:block>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="createdAt" class="form-label">작성일</label> <input
+                        type="text" class="form-control" id="createdAt" name="createdAt"
+                        th:value="${#temporals.format(dto.createdAt, 'yyyy-MM-dd HH:mm')}" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="writer" class="form-label">작성자</label> <input
+                        type="text" class="form-control" id="writer" name="writer"
+                        th:value="${dto.username}" disabled>
+                </div>
+                <a href="/" class="btn btn-outline-secondary">list</a>
+                <th:block th:if="${dto.getEmail() == #authentication.principal.username}">
+                    <a th:href="@{/board/{id}/update(id=${id})}" class="btn btn-outline-warning">modify</a>
+                    <a th:href="@{/board/{id}/remove(id=${id})}" class="btn btn-outline-danger" onclick="return confirm('삭제하시겠습니까?')">remove</a>
+                </th:block>
+            </form>
+            <!-- Comments Form -->
+            <div class="card my-4">
+                <h5 class="card-header">Leave a Comment:</h5>
+                <div class="card-body">
+                    <form th:action="@{/board/{id}/comment(id=${id})}" th:method="post">
+                        <div class="form-group" style="margin-bottom: 10px;">
+                            <input type="hidden" name="idx" th:value="*{idx}" />
+                            <textarea name="content" class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Display Comments -->
+            <div class="card my-4" th:if="${comments.size()} != 0">
+                <h5 class="card-header">Comments:</h5>
+                <div class="card-body">
+                    <div th:each="comment : ${comments}">
+                        <div class="media mb-4">
+                            <div class="media-body">
+                                <div class="d-flex align-items-start">
+                                    <img class="d-flex mr-3 rounded-circle" th:src="${comment.getImageUrl()}" alt="User image" width="50">
+                                    <div>
+                                        <h5 class="mt-0" th:text="${comment.getUsername()}">User Name</h5>
+                                        <p th:text="${comment.getContent()}" th:id="'comment-' + ${comment.getId()}">Comment content</p>
+                                        <small class="text-muted" th:text="${#temporals.format(comment.getCreatedAt(), 'yyyy-MM-dd HH:mm')}">Comment Date</small>
+                                    </div>
+                                </div>
+                                <div th:if="${comment.getEmail() == #authentication.principal.username}">
+                                    <button class="btn btn-sm btn-outline-warning" th:attr="data-id=${comment.getId()}" onclick="editComment(this)">Edit</button>
+                                    <a th:href="@{/board/{id}/comment/{commentId}/remove(id=${id}, commentId=${comment.getId()})}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete this comment?')">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        const id = [[${id}]];
+        /*]]>*/
+    </script>
+</div>
+</body>
+</html>

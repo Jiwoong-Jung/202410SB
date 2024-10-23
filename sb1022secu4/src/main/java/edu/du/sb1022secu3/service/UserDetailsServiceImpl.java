@@ -52,7 +52,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     private UserDetails toUserDetails(Member member) {
         return User.builder()
-                .username(member.getUsername())
+//                .username(member.getUsername())
+                .username(member.getEmail())
                 .password(member.getPassword())
 //                .authorities(new SimpleGrantedAuthority(member.getRole().toString()))
                 .roles(member.getRole())
