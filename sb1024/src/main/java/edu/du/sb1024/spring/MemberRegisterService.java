@@ -2,6 +2,8 @@ package edu.du.sb1024.spring;
 
 import edu.du.sb1024.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -23,10 +25,16 @@ public class MemberRegisterService {
 				.email(req.getEmail())
 				.password(req.getPassword())
 				.regdate(LocalDateTime.now())
+				.password(passwordEncoder().encode(req.getPassword()))
+				.username(req.getName())
 				.role("USER")
 				.build();
 		memberDao.insert(newMember);
 		System.out.println("====>" + newMember);
 		return newMember.getId();
+	}
+
+	PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
 }
