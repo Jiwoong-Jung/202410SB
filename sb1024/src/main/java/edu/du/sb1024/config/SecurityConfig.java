@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,8 +13,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -47,14 +54,26 @@ public class SecurityConfig {
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
                 .antMatchers("/sample/all").permitAll()
-                .antMatchers("/login").permitAll()
+                .antMatchers("/register/**").permitAll()
+//                .antMatchers("/login").permitAll()
                 .antMatchers("/sample/admin").hasRole("ADMIN")
                 .anyRequest().authenticated();
 
-        http.formLogin();
+//        http.formLogin();
 //        http.formLogin().loginPage("/sample/login").permitAll();
         http.csrf().disable();
-        http.logout();
+//        http.logout();
+        http.formLogin()
+                .loginPage("/sample/login") // 로그인 페이지 URL 설정
+                .defaultSuccessUrl("/sample/all", true) // 로그인 성공 후 리다이렉트 URL 설정
+                .permitAll()
+                .and()
+                .logout()
+                .logoutUrl("/sample/logout") // 로그아웃 URL 설정
+                .logoutSuccessUrl("/sample/login") // 로그아웃 성공 후 리다이렉트 URL 설정
+                .invalidateHttpSession(true) // 로그아웃 시 세션 무효화
+                .deleteCookies("JSESSIONID") // 로그아웃 시 쿠키 삭제
+                .permitAll();
 
         http.exceptionHandling().accessDeniedPage("/sample/accessDenied");
         http.csrf()

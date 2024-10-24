@@ -1,11 +1,13 @@
 package edu.du.sb1024.entity;
 
+import edu.du.sb1024.spring.WrongIdPasswordException;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Data            // Getter Setter
@@ -30,4 +32,12 @@ public class Member {
 
     @Column(nullable = false)
     private String role;
+
+    private LocalDateTime regdate;
+
+    public void changePassword(String oldPassword, String newPassword) {
+        if (!password.equals(oldPassword))
+            throw new WrongIdPasswordException();
+        this.password = newPassword;
+    }
 }

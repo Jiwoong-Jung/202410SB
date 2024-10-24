@@ -38,7 +38,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //                .build();
 //        return toUserDetails(member);
 
-        Optional<Member> member = memberRepository.findByUsername(username);
+        Optional<Member> member = memberRepository.findByEmail(username);
 //        if (!member.isPresent()) {
 //            throw new UsernameNotFoundException(username);
 //        }
@@ -52,7 +52,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private UserDetails toUserDetails(Member member) {
         return User.builder()
 //                .username(member.getUsername())
-                .username(member.getEmail())
+                .username(member.getUsername())
                 .password(member.getPassword())
 //                .authorities(new SimpleGrantedAuthority(member.getRole().toString()))
                 .roles(member.getRole())
