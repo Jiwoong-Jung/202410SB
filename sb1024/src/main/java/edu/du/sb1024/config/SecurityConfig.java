@@ -1,8 +1,6 @@
-package com.example.demo.config;
-
+package edu.du.sb1024.config;
 
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -18,8 +16,12 @@ import org.springframework.security.web.SecurityFilterChain;
 import javax.servlet.http.HttpSession;
 
 @Configuration
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+// @EnableGlobalMethodSecurity(    // Method 단위 시큐리티 처리.
+//        prePostEnabled = true,  // Spring Security의 @PreAuthorize, @PreFilter /@PostAuthorize, @PostFilter어노테이션 활성화 여부
+//        securedEnabled = true,  // @Secured어노테이션 활성화 여부
+//        jsr250Enabled = true)   // @RoleAllowed 어노테이션 사용 활성화 여부
 @Log4j2
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig {
 
     @Bean
@@ -29,41 +31,36 @@ public class SecurityConfig {
 
 //    @Bean
 //    public UserDetailsService userDetailsService() {
-//        UserDetails user = User.withUsername("user")
+//        UserDetails user = User.withUsername("user1")
 //                .password(passwordEncoder().encode("1234"))
 //                .roles("USER")
 //                .build();
 //        return new InMemoryUserDetailsManager(user);
 //    }
 
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         log.info("---------filterChain-------------");
         http.authorizeHttpRequests()
-//                .antMatchers("스웨거나 docs 관련 url","css, js 관련 url").permitAll()
+//                .antMatchers("/**").denyAll()
+//                .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
-                .antMatchers("/sample/admin").hasRole("ADMIN")
                 .antMatchers("/sample/all").permitAll()
-                .antMatchers("/h2-console/**").permitAll()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/sample/admin").hasRole("ADMIN")
                 .anyRequest().authenticated();
-//        http.formLogin()
-//                .loginPage("/login") // 커스텀 로그인 페이지 URL
-//                .loginProcessingUrl("/perform_login") // 로그인 form action URL
-//                .defaultSuccessUrl("/home", true) // 로그인 성공 시 이동할 URL
-//                .failureUrl("/login?error=true") // 로그인 실패 시 이동할 URL
-//                .permitAll();
-        http.formLogin().loginPage("/sample/login").permitAll();
-        http.logout();
-        http.exceptionHandling()
-                .accessDeniedPage("/sample/accessDenied");
+
+        http.formLogin();
+//        http.formLogin().loginPage("/sample/login").permitAll();
         http.csrf().disable();
+        http.logout();
+
+        http.exceptionHandling().accessDeniedPage("/sample/accessDenied");
         http.csrf()
                 .ignoringAntMatchers("/h2-console/**")
                 .and().headers().frameOptions().sameOrigin();  // 여기!
+
         return http.build();
     }
-
-
 }

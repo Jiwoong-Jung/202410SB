@@ -30,6 +30,13 @@ public class SampleController {
     public void accessDenied() {
 
     }
+    @GetMapping("/login")
+    public void login(String error, String logout) {
+        log.info("login 페이지..........");
+        log.info(error);
+        log.info("logout: {}", logout);
+    }
+
 
     @GetMapping("/all")
     public void exAll(){

@@ -1,16 +1,13 @@
-package edu.du.sb1022secu3.controller;
+package edu.du.sb1024.controller;
 
-import edu.du.sb1022secu3.entity.Member;
-import edu.du.sb1022secu3.repository.MemberRepository;
+import edu.du.sb1024.entity.Member;
+import edu.du.sb1024.repository.MemberRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.PostConstruct;
 
