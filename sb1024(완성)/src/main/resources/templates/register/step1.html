@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http//www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/basic.html}">
+
+<div layout:fragment="content">
+<head>
+  <title>회원가입</title>
+</head>
+<body>
+<h2>약관</h2>
+<p>약관 내용</p>
+<form th:action="@{/register/step2}" method="post">
+  <label>
+    <input type="checkbox" name="agree" value="true"> 약관 동의
+  </label>
+  <input type="submit" value="다음 단계" />
+</form>
+</body>
+</html>

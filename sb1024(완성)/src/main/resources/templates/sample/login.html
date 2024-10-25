@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http//www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/basic.html}">
+<head>
+    <title>로그인</title>
+</head>
+<body>
+<div class="container" layout:fragment="content">
+    <form method="post" th:action="@{/sample/login}">
+        <div class="form-group">
+            <label class="form-label mt-4">로그인</label>
+                <div class="form-floating mb-3">
+                    <input type="email" name="username" class="form-control" id="username" required>
+                    <label for="username">Email</label>
+                </div>
+            <div class="form-floating mb-4">
+                <input type="password" name="password" class="form-control" id="floatingPassword" required>
+                <label for="floatingPassword">Password</label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Log in</button>
+    </form>
+</div>
+</body>
+</html>
